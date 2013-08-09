@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "active_record_snapshot"
   gem.homepage = "http://github.com/dannguyen/active_record_snapshot"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A system for storing snapshots of ActiveRecord objects}
+  gem.description = %Q{For data records that only need to be partially updated, this provides versioning for dirty attributes}
   gem.email = "dansonguyen@gmail.com"
   gem.authors = ["dannguyen"]
   # dependencies defined in Gemfile
