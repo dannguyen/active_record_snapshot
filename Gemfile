@@ -9,7 +9,7 @@ group :development do
   gem "rdoc", "~> 3.12"
 end
 
-
+gem 'hashie'
 gem 'sqlite3'
 gem 'activesupport', ">=3.2.14"
 gem 'activerecord', ">=3.2.14"
