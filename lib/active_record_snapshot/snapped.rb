@@ -5,16 +5,24 @@ module ActiveRecordSnapshot
 
     included do
       class_attribute :snapshot_config
+
       self.snapshot_config = Hashie::Mash.new 
-      self.snapshot_class_name = [self.class.name, 'snapshots'].join('_') 
       
       has_many :snapshots, 
         class_name: self.snapshot_class_name, 
-        foreign_key: [self.class.name, 'snapped_record_id'].join('_')
+        foreign_key: [self.name, 'snapped_record_id'].join('_')
     end
 
 
     module ClassMethods 
+
+      def snapshot_class_name
+        [self.name.singularize, 'Snapshot'].join
+      end
+
+      def snapshot_table_name
+        [self.name, 'snapshots'].join('_') 
+      end
 
       # usage:
       # snapshot :view_count, when: :dirty

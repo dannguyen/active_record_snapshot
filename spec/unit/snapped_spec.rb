@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'spec_simple_models'
+
 
 describe "ActiveRecordSnapshot::Snapped" do
   it "passes" do
@@ -6,10 +8,14 @@ describe "ActiveRecordSnapshot::Snapped" do
   end
 
   context 'class concerns' do 
-    describe 'class configuration' do 
-      it 'should have snapshot_class_name set to klass_singular_snapshots'
-    end
 
+    ## Using Book and BookSnapshot from spec_simple_models
+
+    describe 'class configuration' do 
+      it 'should have snapshot_class_name set to klass_singular_snapshots' do 
+        expect(Book.snapshot_class_name).to eq 'BookSnapshot'
+      end
+    end
 
     describe '#snapshot' do 
       it "should raise error if original attribute name doesn't exist"

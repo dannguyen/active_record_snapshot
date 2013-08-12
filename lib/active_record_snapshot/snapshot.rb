@@ -1,5 +1,5 @@
 module ActiveRecordSnapshot
-  class Snapshot
+  class Snapshot < ActiveRecord::Base
 
   end
 

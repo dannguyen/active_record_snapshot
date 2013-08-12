@@ -37,3 +37,5 @@ ActiveRecord::Base.establish_connection(
   :database => ":memory:"
 )
 ActiveRecord::Migration.verbose = false
+
+
