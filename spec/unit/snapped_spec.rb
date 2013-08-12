@@ -51,9 +51,26 @@ describe "ActiveRecordSnapshot::Snapped" do
           it 'should raise error if invalid symbol is passed in' do 
             expect{Book.snapshot :title, :when => :whatever}.to raise_error ArgumentError
           end
-
         end
       end
+    end
+
+    describe '#snapshot conveniences' do 
+      # look at Movie config
+      describe '#dirty_snapshot' do 
+        it 'shoudld accept array of attributes' do 
+          expect(Movie.snapshot_config.title[:when]).to eq :dirty
+          expect(Movie.snapshot_config.release[:when]).to eq :dirty
+        end
+      end
+
+      describe '#always_snapshot' do 
+        it 'shoudld accept array of attributes' do 
+          expect(Movie.snapshot_config.gross[:when]).to eq :always
+          expect(Movie.snapshot_config.rank[:when]).to eq :always
+        end
+      end
+
     end
 
     describe 'named_scopes for instances' do 
@@ -77,7 +94,6 @@ describe "ActiveRecordSnapshot::Snapped" do
     describe '#save_snapshot' do 
 
       before(:each) do 
-
         Delorean.time_travel_to "1999-01-01 00:00:00" do 
           @book = Book.create(title: 'Gatsby', price: 42.30, edition: 1, rank: 3)
         end
@@ -86,7 +102,6 @@ describe "ActiveRecordSnapshot::Snapped" do
           @book.assign_attributes(title: 'Gatsby', price: 43.50, edition: 2)
           @snapshot = @book.save_snapshot
         end
-
       end
 
       context 'when :dirty attributes' do 

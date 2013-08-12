@@ -15,6 +15,22 @@ module ActiveRecordSnapshot
 
     module ClassMethods 
 
+      def dirty_snapshot(arr, opts={})
+        atts_array = Array(arr)
+        atts_array.each do |att|
+          snapshot att, :when => :dirty
+        end
+      end
+
+      def always_snapshot(arr, opts={})
+        atts_array = Array(arr)
+        atts_array.each do |att|
+          snapshot att, :when => :always
+        end
+      end
+      
+
+
       def snapshot_class_name
         [self.name.singularize, 'Snapshot'].join
       end
