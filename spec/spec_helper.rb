@@ -5,8 +5,10 @@ require 'rspec'
 require 'active_record'
 require 'database_cleaner'
 require 'sqlite3'
+require 'delorean'
 
 require 'active_record_snapshot'
+require 'protected_attributes'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

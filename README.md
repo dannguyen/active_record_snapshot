@@ -11,5 +11,5 @@ class Book < ActiveRecord::Base
 end
 ````
 
-
+NOTE: Just an alpha alpha alpha version. Schema migration has not been made yet
 
